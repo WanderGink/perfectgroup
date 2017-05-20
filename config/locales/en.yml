@@ -20,4 +20,32 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    header:
+      logo: "comet"
+      home: "Home"
+      help: "Help"
+      about: "About"
+      contact: "Contact"
+
+    footer:
+      content: "<a>Moi thong tin chi tiet xin lien he</a>
+        <p>Hotline: 01669206686</p>"
+
+  pages:
+    about:
+      content: "<h1>Pages#about</h1>
+        <p>Find me in app/views/pages/about.html.erb</p>"
+
+    contact:
+      content: "<h1>Pages#contact</h1>
+        <p>Find me in app/views/pages/contact.html.erb</p>"
+
+    help:
+      content: "<h1>Pages#help</h1>
+        <p>Find me in app/views/pages/help.html.erb</p>"
+
+    home:
+      content: "<h1>Pages#home</h1>
+        <p>Find me in app/views/pages/home.html.erb</p>
+        <p>© %Y My app</p>"
