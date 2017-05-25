@@ -1,0 +1,19 @@
+<h2><%= t ".new" %></h2>
+
+<%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.text_field :username, size: 70, placeholder: t("fuser") %><br/>
+    <%= f.email_field :email, size: 70, placeholder: t("femail"),
+      autofocus:true %><br/>
+    <%= f.telephone_field :phone_number, :size => 70,
+      placeholder: t("fphone")%><br/>
+    <%= f.password_field :password, size: 70, placeholder: t("fpass"),
+      autocomplete: "off" %><br/>
+    <%= f.password_field :password_confirmation, size: 70,
+      placeholder: t("fnpass"), autocomplete: "off" %><br/>
+    <%= f.submit t(".new") %><br/>
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>

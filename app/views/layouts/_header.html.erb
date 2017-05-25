@@ -1,12 +1,30 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to t(".comet"), root_path, id: "logo" %>
+    <%= link_to t("logo"), root_path, class: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t(".home"), root_path %></li>
         <li><%= link_to t(".help"), pages_help_path %></li>
         <li><%= link_to t(".about"), pages_about_path %></li>
         <li><%= link_to t(".contact"), pages_contact_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to t(".users"), "#" %></li>
+          <li class="dropdown">
+            <a href = "#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= t ".account" %><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t(".profile"), "#" %></li>
+              <li><%= link_to t(".setting"), edit_user_password_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to t(".login"), user_session_path %></li>
+        <% end %>
+
+        <li><%= link_to t(".english"), locale: :en %></li>
+        <li><%= link_to t(".vietnam"), locale: :vn %></li>
       </ul>
     </nav>
   </div>
