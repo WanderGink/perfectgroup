@@ -20,32 +20,104 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  layouts:
-    header:
-      logo: "comet"
-      home: "Home"
-      help: "Help"
-      about: "About"
-      contact: "Contact"
+  fuser: "user name"
+  femail: "email"
+  fphone: "phone number"
+  fpass: "password"
+  fnpass: "Confirm password"
+  logo: "comet"
+  home: "Home"
+  help: "Help"
+  about: "About"
+  contact: "Contact"
 
+  layouts:
     footer:
-      content: "<a>Moi thong tin chi tiet xin lien he</a>
-        <p>Hotline: 01669206686</p>"
+      content3: "Moi thong tin chi tiet xin lien he"
+      content4: "01669206686"
 
   pages:
     about:
-      content: "<h1>Pages#about</h1>
-        <p>Find me in app/views/pages/about.html.erb</p>"
+      content1: "Pages#about"
+      content2: "Find me in app/views/pages/about.html.erb"
 
     contact:
-      content: "<h1>Pages#contact</h1>
-        <p>Find me in app/views/pages/contact.html.erb</p>"
+      content1: "Pages#contact"
+      content2: "Find me in app/views/pages/contact.html.erb"
 
     help:
-      content: "<h1>Pages#help</h1>
-        <p>Find me in app/views/pages/help.html.erb</p>"
+      content1: "Pages#help"
+      content2: "Find me in app/views/pages/help.html.erb"
 
     home:
-      content: "<h1>Pages#home</h1>
-        <p>Find me in app/views/pages/home.html.erb</p>
-        <p>© %Y My app</p>"
+      content1: "Pages#home"
+      content2: "Find me in app/views/pages/home.html.erb"
+
+  devise:
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        placeemail: "email"
+        submit: "Resend confirmation instructions"
+    mailer:
+      confirmation_instructions:
+        title: "Welcome "
+        content: "You can confirm your account email through
+          the link below:"
+        linkto: "Confirm my account"
+      email_changed:
+        title: "Hello "
+        content1: "We're contacting you to notify you that your
+          email is being changed to "
+        content2: "We're contacting you to notify you that your
+          email has been changed to "
+      password_change:
+        title: "Hello "
+        content: "We're contacting you to notify you that your
+          password has been changed."
+      reset_password_instructions:
+        title: "Hello "
+        content1: "Someone has requested a link to change your
+          password. You can do this through the link below."
+        linkto: "Change my password"
+        content2: "If you didn't request this, please ignore
+          this email.</p><p>Your password won't change until you
+          access the link above and create a new one."
+      unlock_instructions:
+        title: "Hello "
+        content: "Your account has been locked due to an excessive
+          number of unsuccessful sign in attempts.
+          Click the link below to unlock your account:"
+        linkto: "Unlock my account"
+    passwords:
+      edit:
+        title: "Change your password"
+        submit: "Change my password"
+      new:
+        title: "Forgot your password?"
+        submit: "Send me reset password instructions"
+    registrations:
+      edit:
+        title: "Edit "
+        content16: "(leave blank if you don't want to change it)"
+        content30: "(we need your current password to confirm your changes)"
+        conten39: "Cancel my account"
+        submit: "Update"
+        cancel: "Cancel my account"
+        confirm: "Are you sure?"
+        linkto: "Back"
+      new:
+        submit: "Sign up"
+    sessions:
+      new:
+        title: "Log in"
+        label15: "remember_me"
+    shared:
+      links:
+        linkto2: "Sign up"
+        linkto6: "Forgot your password?"
+        linkto10: "Didn't receive confirmation instructions?"
+        linkto14: "Didn't receive unlock instructions?"
+    unlocks:
+      new:
+        new: "Resend unlock instructions"
