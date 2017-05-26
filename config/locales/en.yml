@@ -62,7 +62,7 @@ en:
     mailer:
       confirmation_instructions:
         title: "Welcome "
-        content: "You can confirm your account email through
+        content2: "You can confirm your account email through
           the link below:"
         linkto: "Confirm my account"
       email_changed:
@@ -73,21 +73,22 @@ en:
           email has been changed to "
       password_change:
         title: "Hello "
-        content: "We're contacting you to notify you that your
+        content2: "We're contacting you to notify you that your
           password has been changed."
       reset_password_instructions:
         title: "Hello "
-        content1: "Someone has requested a link to change your
+        content2: "Someone has requested a link to change your
           password. You can do this through the link below."
         linkto: "Change my password"
-        content2: "If you didn't request this, please ignore
-          this email.</p><p>Your password won't change until you
+        content5: "If you didn't request this, please ignore
+          this email."
+        content6: "Your password won't change until you
           access the link above and create a new one."
       unlock_instructions:
         title: "Hello "
-        content: "Your account has been locked due to an excessive
-          number of unsuccessful sign in attempts.
-          Click the link below to unlock your account:"
+        content2: "Your account has been locked due to an excessive
+          number of unsuccessful sign in attempts."
+        content3: "Click the link below to unlock your account:"
         linkto: "Unlock my account"
     passwords:
       edit:
@@ -99,15 +100,18 @@ en:
     registrations:
       edit:
         title: "Edit "
-        content16: "(leave blank if you don't want to change it)"
-        content30: "(we need your current password to confirm your changes)"
-        conten39: "Cancel my account"
+        content13: "Currently waiting confirmation for: "
+        content18: "(leave blank if you don't want to change it)"
+        content22: " characters minimum"
+        content32: "(we need your current password to confirm your changes)"
+        content41: "Cancel my account"
+        content43: "Unhappy? "
         submit: "Update"
         cancel: "Cancel my account"
         confirm: "Are you sure?"
         linkto: "Back"
       new:
-        submit: "Sign up"
+        new: "Sign up"
     sessions:
       new:
         title: "Log in"
