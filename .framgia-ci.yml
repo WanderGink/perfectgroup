@@ -16,4 +16,4 @@ test:
   eslint:
     command: eslint --format=checkstyle --output-file=.framgia-ci-reports/eslint.xml app/
   rails_best_practices:
-    command: rails_best_practices --format html --output-file .framgia-ci-reports/rails_best_practices.html app/ -e 'app/models/application_record.rb,app/controllers/pages_controller.rb'
+    command: rails_best_practices --format html --config config/rails_best_practices.yml --output-file .framgia-ci-reports/rails_best_practices.html app/

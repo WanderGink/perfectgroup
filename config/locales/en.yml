@@ -125,3 +125,9 @@ en:
     unlocks:
       new:
         new: "Resend unlock instructions"
+  users:
+    index:
+      content2: "All users"
+    user:
+      linkto6: "Delete"
+      linkto7: "You sure"
