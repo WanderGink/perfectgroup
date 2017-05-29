@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_one :shop
 
   has_many :products
-  has_many :relationships, dependent: :destroy
   has_many :comment_products
   has_many :comment_shops
   has_many :rating_products
@@ -25,4 +24,20 @@ class User < ApplicationRecord
   validates_attachment :image, presence: true,
     content_type: {content_type: /\Aimage/},
     size: {in: 0..10.megabytes}
+
+  def follow other_user
+    following << other_user
+  end
+
+  def unfollow other_user
+    following.delete other_user
+  end
+
+  def following? other_user
+    following.include? other_user
+  end
+
+  def current_user? user
+    self == user
+  end
 end
