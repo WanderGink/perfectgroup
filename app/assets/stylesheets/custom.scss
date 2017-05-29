@@ -1,7 +1,17 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+$blue: #00afff;
+$blue-gray-d4: #d4d4d5;
+$color-card-footer: rgba(0, 0, 0, .4);
+$color-border-card-footer: rgba(0, 0, 0, .05);
+$color-card-box-shadow: #e5e6e7;
+$color-card-text: rgba(0, 0, 0, .68);
+$color-meta: rgba(0, 0, 0, .4);
+$color-meta-a: rgba(0, 0, 0, .4);
 $gray-medium-light: #eaeaea;
+$main-bg: #edeff0;
+$opacity-gray: rgba(34, 36, 38, .1);
 $white: #fff;
 
 body {
@@ -66,4 +76,76 @@ footer {
 
 .tab {
   padding-left: 10px;
+}
+
+.main {
+  margin-top: 50px;
+}
+
+.meta {
+  color: $color-meta;
+  font-size: 1em;
+
+  a {
+    color: $color-meta-a;
+    text-decoration: none;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
+.card {
+  background-color: $white;
+  border: 0;
+  border-radius: .28571429rem;
+  box-shadow: .2em .3em .7em $color-card-box-shadow;
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+
+  .card-block {
+    border: 0;
+    border-top: 1px solid $opacity-gray;
+    box-shadow: none;
+    font-size: 1em;
+    margin: 0;
+    padding: 0 1em 1.5em;
+    position: relative;
+
+    .text-bold {
+      font-weight: 700;
+    }
+
+    .card-title {
+      font-size: 1.28571429em;
+      font-weight: 700;
+      line-height: 1.2857em;
+    }
+
+    .card-text {
+      clear: both;
+      color: $color-card-text;
+      margin-top: .2em;
+    }
+  }
+
+  .card-img-top {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .card-footer {
+    background: $white;
+    border-top: 1px solid $white !important;
+    color: $color-card-footer;
+    font-size: 1em;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    position: static;
+    top: 0;
+  }
 }
