@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  include ProductsHelper
   before_action :find_product, except: [:index, :new, :create]
 
   def index
@@ -21,6 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @comment = CommentProduct.new
   end
 
   def edit
@@ -44,13 +46,5 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit :id, :title, :price, :description,
       :avg_rating, :category_id, :product_image, :user_id
-  end
-
-  def find_product
-    @product = Product.find_by id: params[:id]
-    unless @product
-      flash[:error] = t("product_not_found")
-      redirect_to root_url
-    end
   end
 end

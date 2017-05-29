@@ -1,0 +1,3 @@
+$('#modal-comment-<%= @comment_product.id %>').modal('hide');
+$('div#comment-<%= @comment_product.id %>').slideUp();
+$('#comments-list-box').prepend('<%= j render "comment_product", comment_product: @comment_product %>');
