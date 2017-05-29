@@ -5,12 +5,12 @@
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
   <div class="field">
-    <%= f.text_field :username, pladeholder: t("fuser") %><br/>
-    <%= f.email_field :email, pladeholder: t("femail") %><br/>
-    <%= f.telephone_field :phone, pladeholder: t("fphone") %><br/>
-    <%= f.password_field :password, pladeholder: t("fpass"),
+    <%= f.text_field :username, placeholder: t("fuser") %><br/>
+    <%= f.email_field :email, placeholder: t("femail") %><br/>
+    <%= f.telephone_field :phone_number, placeholder: t("fphone") %><br/>
+    <%= f.password_field :password, placeholder: t("fpass"),
       autofocus: true, autocomplete: "off" %><br/>
-    <%= f.password_field :password_confirmation, pladeholder: t("fconnewpass"),
+    <%= f.password_field :password_confirmation, placeholder: t("fnpass"),
       autocomplete: "off" %><br/>
     <%= f.submit t(".submit") %>
   </div>

@@ -10,8 +10,7 @@
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= t ".content13" %><%= resource.unconfirmed_email %>
-    </div>
+    <div><%= t ".content13" %><%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
@@ -42,9 +41,9 @@
   </div>
 <% end %>
 
-<p><%= t ".content41" %></p>
+<p><%= t ".content44" %></p>
 
-<p><%= t ".content43" %><%= button_to t(".cancel"), registration_path(resource_name),
+<p><%= t ".content46" %><%= button_to t(".cancel"),
+  registration_path(resource_name),
   data: {confirm: t(".confirm")}, method: :delete %></p>
-
 <%= link_to t(".linkto"), :back %>
