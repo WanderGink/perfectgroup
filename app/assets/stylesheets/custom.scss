@@ -178,3 +178,50 @@ footer {
     display: block;
   }
 }
+
+$panel-heading-color: #f7f7f7;
+$panel-heading-color-border: #ddd;
+@import 'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css';
+
+.thumbnail {
+  border: 0;
+  padding: 0;
+
+  img {
+    box-shadow: .2em .3em .4em $color-card-box-shadow;
+  }
+}
+
+.panel {
+  position: relative;
+
+  .panel-heading {
+
+    &::before {
+      border-right-color: $panel-heading-color-border;
+      border-width: 8px;
+    }
+
+    &::after {
+      border-right-color: $panel-heading-color;
+      border-width: 7px;
+      margin-left: 2px;
+      margin-top: 1px;
+    }
+
+    &::after,
+    &::before {
+      border-color: transparent;
+      border-style: solid solid outset;
+      content: ' ';
+      display: block;
+      height: 0;
+      left: -16px;
+      pointer-events: none;
+      position: absolute;
+      right: 100%;
+      top: 11px;
+      width: 0;
+    }
+  }
+}

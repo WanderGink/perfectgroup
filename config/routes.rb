@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   get "pages/help"
   get "pages/about"
   get "pages/contact"
-  resources :products
+
   resources :users do
     resources :relationships, only: [:index]
   end
   resources :relationships, only: [:create, :destroy]
+  resources :products do
+    resources :comment_products, only: [:create, :update, :destroy]
+  end
 end

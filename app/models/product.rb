@@ -7,6 +7,8 @@ class Product < ApplicationRecord
   validates_attachment_content_type :product_image,
     content_type: /\Aimage\/.*\z/
 
+  has_many :cmt_user, through: :comment_products,
+    class_name: User.name
   has_many :shop_details
   has_many :comment_products, dependent: :destroy
   has_many :rating_product, dependent: :destroy

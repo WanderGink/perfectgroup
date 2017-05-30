@@ -1,0 +1,59 @@
+<div id="comment-<%= comment_product.id %>">
+  <div class="row">
+    <div class="col-sm-1">
+      <div class="thumbnail">
+        <%= image_tag comment_product.user.image.url(:med),
+          class: "img-circle" %>
+      </div>
+    </div>
+    <div class="col-sm-11">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>
+            <%= link_to comment_product.user.username,
+              user_path(comment_product.user) %>
+          </strong>
+          <span class="text-muted">
+            <%= time_ago_in_words comment_product.created_at %>
+          </span>
+          <div class="pull-right">
+            <%= link_to "#modal-comment-" + comment_product.id.to_s,
+              data: {toggle: "modal"} do %>
+              <i class="ion ion-compose"></i>
+            <% end %>
+            <div class="modal fade"
+              id="modal-comment-<%= comment_product.id %>" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close"
+                      data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_for [comment_product.product, comment_product],
+                      method: :patch, remote: true do |f| %>
+                      <div class="form-group">
+                        <%= f.text_area :content, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.submit t("update"), class: "btn btn-success" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%= link_to product_comment_product_path(comment_product.product,
+              comment_product), method: :delete,
+              remote: true, data: {confirm: t("are_you_sure")} do %>
+              <i class="ion ion-close-round"></i>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= comment_product.content %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

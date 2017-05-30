@@ -145,3 +145,7 @@ en:
   show: "Show"
   edit: "Modify"
   delete: "Remove"
+  comment: "Comment"
+  update: "Update"
+  reviewers: "Reviewers"
+  comment_not_found: "Comment not found!"
