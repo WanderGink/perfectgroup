@@ -1,7 +1,7 @@
 <li>
   <%= link_to image_tag(user.image.url(:small)), user.image.url %>
   <a class="tab" />
-  <%= link_to user.username %>
+  <%= link_to user.username, user %>
 </li>
 <% if user.admin? %>
   <%= link_to t(".linkto6"), user, method: :delete,

@@ -13,6 +13,8 @@ $gray-medium-light: #eaeaea;
 $main-bg: #edeff0;
 $opacity-gray: rgba(34, 36, 38, .1);
 $white: #fff;
+$gray: #808080;
+$blue: #00f;
 
 body {
   padding-top: 40px;
@@ -147,5 +149,32 @@ footer {
     padding: .75em 1em;
     position: static;
     top: 0;
+  }
+}
+
+.stats {
+  margin-top: 0;
+  overflow: auto;
+  padding: 0;
+
+  a {
+    border-left: 1px solid $gray-lighter;
+    color: $gray;
+    float: left;
+    padding: 0 10px;
+
+    &:first-child {
+      border: 0;
+      padding-left: 0;
+    }
+
+    &:hover {
+      color: $blue;
+      text-decoration: none;
+    }
+  }
+
+  strong {
+    display: block;
   }
 }

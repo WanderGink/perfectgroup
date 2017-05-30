@@ -1,0 +1,7 @@
+<div id="follow_form">
+  <% if following.new_record? %>
+    <%= render "follow", follow: following, user: user %>
+  <% else %>
+    <%= render "unfollow", unfollow: following %>
+  <% end %>
+</div>

@@ -31,6 +31,8 @@ en:
   about: "About"
   contact: "Contact"
   products: "Products"
+  follow: "Follow"
+  unfollow: "Unfollow"
 
   layouts:
     footer:

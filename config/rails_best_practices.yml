@@ -1,14 +1,10 @@
 AddModelVirtualAttributeCheck: { }
 AlwaysAddDbIndexCheck: { }
-#CheckSaveReturnValueCheck: { }
-#CheckDestroyReturnValueCheck: { }
 DefaultScopeIsEvilCheck: { }
 DryBundlerInCapistranoCheck: { }
-#HashSyntaxCheck: { }
 IsolateSeedDataCheck: { }
 KeepFindersOnTheirOwnModelCheck: { }
 LawOfDemeterCheck: { }
-#LongLineCheck: { max_line_length: 80 }
 MoveCodeIntoControllerCheck: { }
 MoveCodeIntoHelperCheck: { array_count: 3 }
 MoveCodeIntoModelCheck: { use_count: 2 }
@@ -33,7 +29,11 @@ RemoveUnusedMethodsInControllersCheck: { except_methods: [
 ]}
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
 RemoveUnusedMethodsInModelsCheck: {
-  except_methods: [],
+  except_methods: [
+    'User#follow',
+    'User#unfollow',
+    'User#authenticated?'
+  ],
   ignored_files: []
 }
 ReplaceComplexCreationWithFactoryMethodCheck: { attribute_assignment_count: 2 }

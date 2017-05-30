@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "pages/*page" => "pages#show"
   root "pages#show", page: "home"
+  get "pages/*page" => "pages#show"
   get "pages/help"
   get "pages/about"
   get "pages/contact"
-  root "pages#show", page: "home"
-
   resources :products
-  resources :users
+  resources :users do
+    resources :relationships, only: [:index]
+  end
+  resources :relationships, only: [:create, :destroy]
 end
