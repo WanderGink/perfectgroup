@@ -107,8 +107,8 @@ en:
         content18: "(leave blank if you don't want to change it)"
         content22: " characters minimum"
         content32: "(we need your current password to confirm your changes)"
-        content41: "Cancel my account"
-        content43: "Unhappy? "
+        content44: "Cancel my account"
+        content46: "Unhappy? "
         submit: "Update"
         cancel: "Cancel my account"
         confirm: "Are you sure?"
@@ -134,6 +134,8 @@ en:
     user:
       linkto6: "Delete"
       linkto7: "You sure"
+    show_follow:
+      content7: "view my profile"
   product_not_found: "Product not found!"
   the_form_contains: "The form contains"
   error_counter:

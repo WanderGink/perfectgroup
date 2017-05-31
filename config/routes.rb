@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "pages/about"
   get "pages/contact"
 
-  resources :users do
+  resources :users, only: [:index, :show] do
     resources :relationships, only: [:index]
   end
   resources :relationships, only: [:create, :destroy]

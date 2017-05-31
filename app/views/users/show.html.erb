@@ -12,8 +12,7 @@
   </aside>
   <div class="col-md-8">
     <% unless @user.current_user? current_user %>
-      <%= render "follow_form", user: @user,
-        following: @following %>
+      <%= render "follow_form", following: @following, user: @user %>
     <% end %>
   </div>
 </div>

@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_attached_file :image, styles: {small: "80x80#", med: "100x100#",
-    large: "200x200#"}
+    large: "200x200#", verysmall: "30x30#"}
 
   validates_attachment :image, presence: true,
     content_type: {content_type: /\Aimage/},
