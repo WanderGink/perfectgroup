@@ -13,7 +13,9 @@
           <%= image_tag product.product_image.url(:thumb),
             class: "card-img-top" %>
           <div class="card-block">
-            <h5 class="card-title text-bold"><%= product.title %></h5>
+            <h5 class="card-title text-bold">
+              <%= link_to product.title, product_path(product) %>
+            </h5>
             <div class="meta">
               <%= link_to product.user.username, "#" %>
             </div>
@@ -22,7 +24,8 @@
             </h5>
             <%= link_to t("add_to_cart"), "#", class: "btn btn-danger" %>
           </div>
-          <% if current_user.username == product.user.username %>
+          <% if user_signed_in? &&
+            current_user.username == product.user.username %>
             <div class="card-footer">
               <%= link_to product_path(product),
                 class: "btn btn-sm btn-info" do %>

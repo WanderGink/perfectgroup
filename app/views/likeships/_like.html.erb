@@ -1,0 +1,12 @@
+<%= form_for :likeship, url: likeships_path, method: :post,
+  remote: true do |f| %>
+  <%= f.hidden_field :comment_product_id,
+    value: comment_product.id %>
+  <%= f.button type: "submit", class: "btn-heart",
+    id: "heart-#{comment_product.id}" do %>
+    <i class="ion ion-ios-heart-outline text-danger text-bold"></i>
+  <% end %>
+  <span id="likes-count-<%= comment_product.id %>">
+    <%= comment_product.likeships.count %>
+  </span>
+<% end %>

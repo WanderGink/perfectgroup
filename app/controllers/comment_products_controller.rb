@@ -19,11 +19,12 @@ class CommentProductsController < ApplicationController
   def update
     respond_to do |format|
       if @comment_product.update_attributes comment_product_params
-        format.html{redirect_to product_url(@product)}
+        flash[:success] = t "cmt_upd_s"
         format.js
       else
-        format.html{redirect_to product_url(@product)}
+        flash[:error] = t "cmt_upd_f"
       end
+      format.html{redirect_to product_url(@product)}
     end
   end
 
