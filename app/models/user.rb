@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :cart
   has_one :shop
 
+  has_many :feedbacks, dependent: :destroy
   has_many :likeships, dependent: :destroy
   has_many :likeship_comment_products, through: :likeships,
     class_name: CommentProduct.name

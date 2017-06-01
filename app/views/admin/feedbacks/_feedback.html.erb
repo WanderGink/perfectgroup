@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to feedback.subject, [:admin, feedback] %></td>
+  <td><%= link_to feedback.user.username, feedback.user %></td>
+  <td><%= Time.at(feedback.created_at).to_formatted_s(:long)  %></td>
+  <td><%= link_to t("delete"), admin_feedback_path(feedback),
+    method: :delete, data: {confirm: t("are_you_sure")} %></td>
+</tr>

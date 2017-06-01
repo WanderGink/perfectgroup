@@ -1,4 +1,5 @@
 class CommentProductsController < ApplicationController
+  load_and_authorize_resource
   include CommentProductsHelper
   before_action :find_product, only: [:create, :update, :destroy]
   before_action :find_comment, only: [:update, :destroy]

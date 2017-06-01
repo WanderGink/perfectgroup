@@ -57,6 +57,7 @@ gem "bootstrap-sass", "3.3.6"
 gem "will_paginate", "3.1.0"
 gem "bootstrap-will_paginate", "0.0.10"
 gem "paperclip"
+gem "cancancan", "~> 1.10"
 
 group :test do
   gem "rspec-collection_matchers"
