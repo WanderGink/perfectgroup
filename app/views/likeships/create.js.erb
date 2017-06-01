@@ -1,0 +1,4 @@
+$('#like-<%= @comment_product.id %>').css('display', 'none');
+$('#unlike-<%= @comment_product.id %>').css('display', 'block');
+$('#unlike-<%= @comment_product.id %>').html('<%= j render "likeships/unlike", comment_product: @comment_product, like: @like %>');
+$('#likes-count-<%= @comment_product.id %>').html('<%= @comment_product.likeships.count %>');

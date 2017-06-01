@@ -47,4 +47,12 @@ class ProductsController < ApplicationController
     params.require(:product).permit :id, :title, :price, :description,
       :avg_rating, :category_id, :product_image, :user_id
   end
+
+  def find_product
+    @product = Product.find_by id: params[:id]
+    unless @product
+      flash[:error] = t "product_not_found"
+      redirect_to root_url
+    end
+  end
 end

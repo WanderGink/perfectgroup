@@ -1,0 +1,12 @@
+<%= form_for like, url: likeship_path(like), method: :delete,
+  remote: true do |f| %>
+  <%= f.hidden_field :comment_product_id,
+    value: comment_product.id %>
+  <%= f.button type: "submit", class: "btn-heart",
+    id: "heart-#{comment_product.id}" do %>
+    <i class="ion ion-ios-heart text-danger"></i>
+  <% end %>
+  <span id="likes-count-<%= comment_product.id %>">
+    <%= comment_product.likeships.count %>
+  </span>
+<% end %>

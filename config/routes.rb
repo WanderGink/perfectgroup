@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :products do
     resources :comment_products, only: [:create, :update, :destroy]
   end
+  resources :likeships, only: [:create, :destroy]
 end

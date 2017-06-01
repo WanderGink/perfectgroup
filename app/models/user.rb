@@ -6,6 +6,10 @@ class User < ApplicationRecord
   has_one :cart
   has_one :shop
 
+  has_many :likeships, dependent: :destroy
+  has_many :likeship_comment_products, through: :likeships,
+    class_name: CommentProduct.name
+
   has_many :products, dependent: :destroy
   has_many :comment_products, dependent: :destroy
   has_many :cmt_products, through: :comment_products,
@@ -42,5 +46,17 @@ class User < ApplicationRecord
 
   def current_user? user
     self == user
+  end
+
+  def like comment_id
+    likeships.create comment_product_id: comment_id
+  end
+
+  def unlike liking
+    liking.destroy
+  end
+
+  def liking? comment_id
+    likeships.find_by comment_product_id: comment_id
   end
 end

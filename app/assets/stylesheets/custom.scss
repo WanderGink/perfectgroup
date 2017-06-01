@@ -225,3 +225,14 @@ $panel-heading-color-border: #ddd;
     }
   }
 }
+
+$text-danger-color: #ff0342;
+
+.text-danger {
+  color: $text-danger-color;
+}
+
+.btn-heart {
+  background-color: transparent;
+  border: 0;
+}
