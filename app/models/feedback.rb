@@ -3,6 +3,4 @@ class Feedback < ApplicationRecord
 
   validates :subject, presence: true
   validates :content, presence: true
-
-  scope :newest, (->{order(created_at: :desc).preload :user})
 end
