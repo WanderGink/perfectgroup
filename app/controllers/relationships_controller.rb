@@ -1,4 +1,6 @@
 class RelationshipsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @title = params[:title]
     @user = User.find_by id: params[:user_id]

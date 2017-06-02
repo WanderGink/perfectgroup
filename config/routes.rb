@@ -14,4 +14,8 @@ Rails.application.routes.draw do
     resources :comment_products, only: [:create, :update, :destroy]
   end
   resources :likeships, only: [:create, :destroy]
+  resources :feedbacks, only: [:new, :create]
+  namespace :admin do
+    resources :feedbacks, only: [:index, :show, :destroy]
+  end
 end

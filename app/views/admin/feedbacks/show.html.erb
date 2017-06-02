@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="main">
+    <div class="col-md-9">
+      <div class="primary-content">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4><%= @feedback.subject %></h4>
+              </div>
+              <div class="panel-body">
+                <h5>
+                  <i class="ion ion-clock text-danger"></i>
+                  <%= Time.at(@feedback.created_at).to_formatted_s(:long) %>
+                  <br>
+                  <%= @feedback.content %>
+                </h5>
+              </div>
+              <div class="panel-footer">
+                <h5><%= link_to @feedback.user.username,
+                  user_path(@feedback.user) %></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

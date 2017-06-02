@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   include ProductsHelper
   before_action :find_product, except: [:index, :new, :create]
 
   def index
     @products = Product.all
-    @categories = Category.all
   end
 
   def new
