@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :destroy]
 
   def index
     @users = User.all.paginate page: params[:page]
@@ -14,6 +14,12 @@ class UsersController < ApplicationController
     else
       @following = current_user.active_relationships.build
     end
+  end
+
+  def destroy
+    @user.destroy
+    flash[:success] = t ".complete"
+    redirect_to root_url
   end
 
   private

@@ -2,6 +2,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from CanCan::AccessDenied, with: :page_error
+  helper_method :current_order
+
+  def current_order
+    if session[:order_id].present?
+      Order.find_by id: session[:order_id]
+    else
+      delele_session unless @order_status = OrderStatus.first
+      current_user.orders.create @order_status_id if user_signed_in?
+    end
+  end
 
   private
   def configure_permitted_parameters
@@ -13,5 +23,9 @@ class ApplicationController < ActionController::Base
 
   def page_error
     render template: "public/404", status: 403
+  end
+
+  def delele_session
+    session[:order_id] = nil
   end
 end

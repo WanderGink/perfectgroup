@@ -5,7 +5,7 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable
 
   has_many :feedbacks, dependent: :destroy
-  has_many :carts
+  has_many :orders, dependent: :destroy
   has_many :likeships, dependent: :destroy
   has_many :likeship_comment_products, through: :likeships,
     class_name: CommentProduct.name
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :comment_products, dependent: :destroy
   has_many :cmt_products, through: :comment_products,
     class_name: Product.name
-  has_many :relationships, dependent: :destroy
+  has_many :relationships
   has_many :comment_products
   has_many :rating_products
   has_many :active_relationships, class_name: Relationship.name,
@@ -29,6 +29,8 @@ class User < ApplicationRecord
   validates_attachment :image, presence: true,
     content_type: {content_type: /\Aimage/},
     size: {in: 0..10.megabytes}
+
+  scope :not_is_admin, (->_user{where admin: false})
 
   def follow other_user
     following << other_user

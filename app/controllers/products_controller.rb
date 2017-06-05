@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
   include ProductsHelper
   before_action :find_user, only: :index
   before_action :find_product, except: [:index, :new, :create]
   before_action :load_category, only: [:new, :edit]
+  before_action :load_order, only: [:index, :show]
 
   def index
     @products = @user.products
@@ -66,5 +66,9 @@ class ProductsController < ApplicationController
 
   def load_category
     @user = Category.all
+  end
+
+  def load_order
+    @order_item = current_order.order_items.new if user_signed_in?
   end
 end

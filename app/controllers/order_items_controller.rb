@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :find_items, only[:update, :destroy]
+  before_action :find_items, only: [:update, :destroy]
 
   def create
     @order = current_order
@@ -38,9 +38,11 @@ class OrderItemsController < ApplicationController
   end
 
   def find_items
+    @order = current_order
     @order_item = @order.order_items.find_by id: params[:id]
     unless @order_item
       flash[:danger] = t "danger"
+      redirect_to root_url
     end
   end
 end
