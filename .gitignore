@@ -24,3 +24,4 @@
 /.framgia-ci-reports/*
 /public/*
 /db/seeds.rb
+/.framgia-ci-result.temp.yml
