@@ -32,7 +32,9 @@ RemoveUnusedMethodsInModelsCheck: {
   except_methods: [
     'User#follow',
     'User#unfollow',
-    'User#authenticated?'
+    'User#authenticated?',
+    'OrderItem#total_price',
+    'OrderItem#increment_product_quantity'
   ],
   ignored_files: []
 }

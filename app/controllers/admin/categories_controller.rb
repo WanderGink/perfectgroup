@@ -8,12 +8,16 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
+    @category = Category.new category_params
     if @category.save
       flash[:info] = t ".info"
       redirect_to admin_categories_url
     else
       render :new
     end
+  end
+
+  def edit
   end
 
   def update

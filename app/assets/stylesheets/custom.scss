@@ -15,13 +15,19 @@ $opacity-gray: rgba(34, 36, 38, .1);
 $white: #fff;
 $gray: #808080;
 $blue: #00f;
+$shadow-color: #ddd;
 
 body {
+  background-color: $main-bg;
   padding-top: 40px;
 }
 
+.navbar-default {
+  background-color: $white !important;
+}
+
 .logo {
-  color: $white;
+  color: $blue;
   float: left;
   font-size: 1.7em;
   font-weight: bold;
@@ -31,16 +37,20 @@ body {
   text-transform: uppercase;
 
   &:hover {
-    color: $white;
+    color: $blue;
     text-decoration: none;
   }
 }
 
 footer {
+  background-color: $white;
   border-top: 1px solid $gray-medium-light;
+  bottom: 0;
   color: $gray-light;
   margin-top: 45px;
-  padding-top: 5px;
+  padding: 10px 0 10;
+  position: relative;
+  width: 100%;
 
   a {
     color: $gray;
@@ -82,6 +92,7 @@ footer {
 
 .main {
   margin-top: 50px;
+  padding-bottom: 500px;
 }
 
 .meta {
@@ -235,4 +246,27 @@ $text-danger-color: #ff0342;
 .btn-heart {
   background-color: transparent;
   border: 0;
+}
+
+.m-t-md {
+  margin-top: 20px;
+}
+
+.m-t-lg {
+  margin-top: 40px;
+}
+
+.m-l-md {
+  margin-left: 20px;
+}
+
+.clearfix img {
+  border: 1px solid $shadow-color;
+  box-shadow: .1em .2em .6em $shadow-color;
+}
+
+.vn,
+.uk {
+  height: 24px;
+  width: 24px;
 }
