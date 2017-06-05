@@ -1,3 +1,22 @@
-<% users.each do |user| %>
-  <%= link_to user.username, user_products_path(user) %>
-<% end %>
+<div class="row">
+  <% users.each do |user| %>
+    <div class="col-sm-3 col-lg-3 col-md-3">
+      <div class="card">
+        <div class="card-block">
+          <div class="clearfix">
+            <%= image_tag user.image.url(:med),
+              class: "img-circle pull-left user-shop-image" %>
+            <div class="pull-right">
+              <div class="card-title text-bold user-shop-card">
+                <%= user.username %>
+              </div>
+              <br>
+              <%= link_to t("go_to_shop"), user_products_path(user),
+                class: "btn btn-info" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

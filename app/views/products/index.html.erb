@@ -2,9 +2,9 @@
   <div class="main">
     <% if user_signed_in? %>
       <%= link_to t("sell_product"), new_product_path,
-        class: "btn btn-success" %>
+        class: "btn btn-success" unless current_user.admin? %>
     <% end %>
-    <br>
+    <br><br>
     <div class="row">
     <% if @products.present? %>
       <% @products.each do |product| %>
@@ -22,23 +22,29 @@
             <h5 class="card-text">
               <%= number_to_currency product.price %>
             </h5>
-            <%= link_to t("add_to_cart"), "#", class: "btn btn-danger" %>
+            <% if @product.present? %>
+              <%= form_for @product, url: order_items_path(@product),
+                remote: true do |f| %>
+                <%= f.hidden_field :quantity, value: 1,
+                  class: "form-control", min: 1 %>
+                <%= f.hidden_field :product_id, value: product.id %>
+                <%= f.submit t("add_to_cart"),
+                  class: "btn btn-danger" unless current_user.admin?%>
+              <% end %>
+            <% end %>
           </div>
           <% if user_signed_in? &&
             current_user.username == product.user.username %>
             <div class="card-footer">
-              <%= link_to product_path(product),
-                class: "btn btn-sm btn-info" do %>
+              <%= link_to product_path(product) do %>
                 <i class="ion ion-ios-information-outline"></i>
                 <%= t "show" %>
               <% end %>
-              <%= link_to edit_product_path(product),
-                class: "btn btn-sm btn-success" do %>
+              <%= link_to edit_product_path(product) do %>
                 <i class="ion ion-compose"></i> <%= t "edit" %>
               <% end %>
               <%= link_to product_path(product), method: :delete,
-                data: {confirm: t("are_you_sure")},
-                class: "btn btn-sm btn-danger" do %>
+                data: {confirm: t("are_you_sure")} do %>
                 <i class="ion ion-ios-trash-outline"></i>
                 <%= t "delete" %>
               <% end %>
