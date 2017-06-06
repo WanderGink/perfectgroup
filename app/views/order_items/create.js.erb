@@ -1,0 +1,5 @@
+<% if @order.errors.any? || @order_item.errors.any? %>
+  alert(<%= t ".alert" %>)
+<% else %>
+  $('.cart-text').html('<%= j render "layouts/cart_text" %>');
+<% end %>

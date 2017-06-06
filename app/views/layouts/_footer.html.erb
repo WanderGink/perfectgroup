@@ -1,6 +1,15 @@
-<footer class="footer">
-  <small>
-    <a><%= t ".content3" %></a>
-    <p><%= t ".content4" %></p>
-  </small>
+<footer>
+  <div class="container">
+    <div class="clearfix">
+      <span class="pull-left"><%= t ".content" %></span>
+      <div class="pull-right">
+      <ul class="list-unstyled list-inline">
+        <li><%= link_to t(".home"), root_path %></li>
+        <li><%= link_to t(".help"), pages_help_path %></li>
+        <li><%= link_to t(".about"), pages_about_path %></li>
+        <li><%= link_to t(".contact"), pages_contact_path %></li>
+      </ul>
+      </div>
+    </div>
+  </div>
 </footer>

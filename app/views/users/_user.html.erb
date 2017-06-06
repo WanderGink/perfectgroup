@@ -3,7 +3,7 @@
   <a class="tab" />
   <%= link_to user.username, user %>
 </li>
-<% if user.admin? %>
+<% if current_user.admin? && !user.current_user?(current_user) %>
   <%= link_to t(".linkto6"), user, method: :delete,
     data: {confirm: t(".linkto7")} %>
 <% end %>

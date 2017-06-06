@@ -36,8 +36,9 @@ en:
 
   layouts:
     footer:
-      content3: "Moi thong tin chi tiet xin lien he"
-      content4: "01669206686"
+      content: "Copyright by Dark Team"
+    cart_text:
+      content: "%{size} Items in Order (%{subtotal})"
 
   pages:
     about:
@@ -136,6 +137,20 @@ en:
       linkto7: "You sure"
     show_follow:
       content7: "view my profile"
+  orders:
+    order_row:
+      confirm: "Are you sure you wish to delete the %{order} from your cart?"
+      delete: "Delete"
+      update: "Update Quantity"
+      total: "Total Price: "
+      unit: "Unit price: "
+    order_shopping:
+      empty: "Empty Cart"
+      content: "There are no items in your shopping cart.
+        Please go button follow and add some items to your cart."
+  order_items:
+    create:
+      alert: "not valid."
   product_not_found: "Product not found!"
   the_form_contains: "The form contains"
   error_counter:
