@@ -12,25 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170602022556) do
 
-  create_table "cart_items", force: :cascade do |t|
-    t.integer  "quantity"
-    t.float    "price"
-    t.float    "total"
-    t.integer  "cart_id"
-    t.integer  "shop_detail_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
-    t.index ["shop_detail_id"], name: "index_cart_items_on_shop_detail_id"
-  end
-
-  create_table "carts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -63,81 +44,6 @@ ActiveRecord::Schema.define(version: 20170602022556) do
     t.datetime "updated_at",         null: false
     t.index ["comment_product_id"], name: "index_likeships_on_comment_product_id", unique: true
     t.index ["user_id"], name: "index_likeships_on_user_id", unique: true
-  end
-
-  create_table "order_items", force: :cascade do |t|
-    t.decimal  "unit_price",  precision: 12, scale: 3
-    t.integer  "quantity"
-    t.decimal  "total_price", precision: 12, scale: 3
-    t.integer  "product_id"
-    t.integer  "order_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id", unique: true
-    t.index ["product_id"], name: "index_order_items_on_product_id", unique: true
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",   precision: 12, scale: 3
-    t.decimal  "tax",        precision: 12, scale: 3
-    t.decimal  "shipping",   precision: 12, scale: 3
-    t.decimal  "total",      precision: 12, scale: 3
-    t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["user_id"], name: "index_orders_on_user_id", unique: true
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_id"], name: "index_order_items_on_product_id"
-  end
-
-  create_table "order_statuses", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",        precision: 12, scale: 3
-    t.decimal  "tax",             precision: 12, scale: 3
-    t.decimal  "shipping",        precision: 12, scale: 3
-    t.decimal  "total",           precision: 12, scale: 3
-    t.integer  "user_id"
-    t.integer  "order_status_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "order_items", force: :cascade do |t|
-    t.decimal  "unit_price",  precision: 12, scale: 3
-    t.integer  "quantity"
-    t.decimal  "total_price", precision: 12, scale: 3
-    t.integer  "product_id"
-    t.integer  "order_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_id"], name: "index_order_items_on_product_id"
-  end
-
-  create_table "order_statuses", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",        precision: 12, scale: 3
-    t.decimal  "tax",             precision: 12, scale: 3
-    t.decimal  "shipping",        precision: 12, scale: 3
-    t.decimal  "total",           precision: 12, scale: 3
-    t.integer  "user_id"
-    t.integer  "order_status_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -227,6 +133,13 @@ ActiveRecord::Schema.define(version: 20170602022556) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 0,     null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
