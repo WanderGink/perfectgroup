@@ -15,7 +15,6 @@ class User < ApplicationRecord
     class_name: Product.name
   has_many :relationships
   has_many :comment_products
-  has_many :rating_products
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
@@ -26,13 +25,17 @@ class User < ApplicationRecord
   has_attached_file :image, styles: {small: "80x80#", med: "100x100#",
     large: "200x200#", verysmall: "30x30#"}
 
-  validates_attachment :image, presence: true,
+  validates_attachment :image,
     content_type: {content_type: /\Aimage/},
     size: {in: 0..10.megabytes}
 
   scope :not_is_admin, (->_user{where admin: false})
 
   searchkick text_start: [:username]
+
+  ratyrate_rateable "quality"
+
+  ratyrate_rater
 
   def follow other_user
     following << other_user
