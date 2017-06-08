@@ -32,6 +32,8 @@ class User < ApplicationRecord
 
   scope :not_is_admin, (->_user{where admin: false})
 
+  searchkick text_start: [:username]
+
   def follow other_user
     following << other_user
   end

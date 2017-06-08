@@ -6,7 +6,13 @@ class ProductsController < ApplicationController
   before_action :load_order, only: [:index, :show]
 
   def index
-    @products = @user.products
+    search = params[:term].present? ? params[:term] : nil
+    if search
+      #Product.where("title LIKE ? OR plot LIKE ?", "%#{search}%", "%#{search}%")
+      @products = Product.search(search)
+    else
+      @products = @user.products
+    end
   end
 
   def new

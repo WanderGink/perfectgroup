@@ -1,3 +1,7 @@
-<%= link_to t(".content", size: current_order.order_items.size,
-  subtotal: (number_to_currency current_order.subtotal)),
-  order_path, class: "btn btn-link" %>
+<% if current_order %>
+  <%= link_to t(".content", size: current_order.order_items.size,
+    subtotal: (number_to_currency current_order.subtotal)),
+    order_path, class: "btn btn-link" %>
+<% else %>
+  <%= link_to root_path %>
+<% end %>

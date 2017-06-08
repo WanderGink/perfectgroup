@@ -58,6 +58,7 @@ gem "will_paginate", "3.1.0"
 gem "bootstrap-will_paginate", "0.0.10"
 gem "paperclip"
 gem "cancancan", "~> 1.10"
+gem "searchkick"
 
 group :test do
   gem "rspec-collection_matchers"
