@@ -1,6 +1,13 @@
 <header class="navbar navbar-fixed-top navbar-default">
   <div class="container">
     <%= link_to t("logo"), root_path, class: "logo" %>
+    <%= form_tag users_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+      <p>
+        <%= text_field_tag :search, params[:search], class: "form-control",
+            placeholder: "Search...", id: "search", autocomplete: "off" %>
+        <%= submit_tag "Search", class: "btn btn-default" %>
+      </p>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

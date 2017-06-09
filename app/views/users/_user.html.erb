@@ -8,13 +8,15 @@
   <%= link_to user.username, user %>
   <%= rating_for user, "quality", star: 5 %>
 </li>
-<td>
-  <%= form_for(user) do |f| %>
-    <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-    <%= f.submit 'Change Role', :class => 'button-xs' %>
+<% if can? :read, User %>
+  <td>
+    <%= form_for(user) do |f| %>
+      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+      <%= f.submit 'Change Role', :class => 'button-xs' %>
+    <% end %>
+  </td>
+  <% if current_user.admin? && !user.current_user?(current_user) %>
+    <%= link_to t(".linkto6"), user, method: :delete,
+      data: {confirm: t(".linkto7")} %>
   <% end %>
-</td>
-<% if current_user.admin? && !user.current_user?(current_user) %>
-  <%= link_to t(".linkto6"), user, method: :delete,
-    data: {confirm: t(".linkto7")} %>
 <% end %>
