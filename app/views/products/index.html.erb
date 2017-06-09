@@ -5,6 +5,13 @@
         class: "btn btn-success" unless current_user.admin? %>
     <% end %>
     <br><br>
+    <%= form_tag user_products_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+      <p>
+        <%= text_field_tag :search, params[:search], class: "form-control",
+            placeholder: "Search...", id: "search", autocomplete: "off" %>
+        <%= submit_tag "Search", class: "btn btn-default" %>
+      </p>
+    <% end %>
     <div class="row">
       <% if @products.present? %>
         <% @products.each do |product| %>

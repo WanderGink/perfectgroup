@@ -27,7 +27,7 @@
             <li><%= link_to t("category"), admin_categories_path %></li>
           <% end %>
           <li><%= link_to t("products"),
-            user_products_path(current_user) unless current_user.admin? %></li>
+            user_products_path(current_user) unless current_user.admin %></li>
         <% else %>
           <li><%= link_to t(".login"), user_session_path %></li>
         <% end %>

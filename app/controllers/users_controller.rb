@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :destroy]
 
   def index
-    #@users = User.all.paginate page: params[:page]
     if params[:search].present?
       @users = User.search(params[:search])
     else
