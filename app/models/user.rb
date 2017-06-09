@@ -29,13 +29,20 @@ class User < ApplicationRecord
     content_type: {content_type: /\Aimage/},
     size: {in: 0..10.megabytes}
 
-  scope :not_is_admin, (->_user{where admin: false})
+  scope :not_is_admin, (->_user{where role: 1})
 
   searchkick text_start: [:username]
 
   ratyrate_rateable "quality"
 
   ratyrate_rater
+
+  enum role: [:admin, :sale_man, :buy_man]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :sale_man
+  end
 
   def follow other_user
     following << other_user

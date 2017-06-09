@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "pages/contact"
   get "pages/product"
 
-  resources :users, only: [:index, :show, :destroy] do
+  resources :users, only: [:index, :show, :destroy, :update] do
     resources :relationships, only: :index
     resources :products, only: :index
   end

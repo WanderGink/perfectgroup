@@ -1,8 +1,10 @@
 <div class="row">
   <div class="main">
     <% if user_signed_in? %>
-      <%= link_to t("sell_product"), new_product_path,
-        class: "btn btn-success" unless current_user.admin? %>
+      <% if can? :read, Product %>
+        <%= link_to t("sell_product"), new_product_path,
+          class: "btn btn-success" %>
+      <% end %>
     <% end %>
     <br><br>
     <%= form_tag user_products_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
@@ -30,14 +32,15 @@
               <h5 class="card-text">
                 <%= number_to_currency product.price %>
               </h5>
-              <% if @product.present? %>
-                <%= form_for @product, url: order_items_path(@product),
+              <% if @order_item.present? %>
+                <%= form_for @order_item, url: order_items_path(@order_item),
                   remote: true do |f| %>
                   <%= f.hidden_field :quantity, value: 1,
                     class: "form-control", min: 1 %>
                   <%= f.hidden_field :product_id, value: product.id %>
-                  <%= f.submit t("add_to_cart"),
-                    class: "btn btn-danger" unless current_user.admin?%>
+                  <% if can? :read, Product %>
+                    <%= f.submit t("add_to_cart"), class: "btn btn-danger" %>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>

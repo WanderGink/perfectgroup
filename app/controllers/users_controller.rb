@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_user, only: [:show, :destroy]
+  before_action :find_user, only: [:show, :destroy, :update]
 
   def index
     if params[:search].present?
@@ -20,6 +20,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update_attributes(secure_params)
+      redirect_to users_path, :notice => "User updated."
+    else
+      redirect_to users_path, :alert => "Unable to update user."
+    end
+  end
+
   def destroy
     @user.destroy
     flash[:success] = t ".complete"
@@ -33,5 +41,9 @@ class UsersController < ApplicationController
       redirect_to root_url
       flash[:danger] = t ".flash"
     end
+  end
+
+  def secure_params
+    params.require(:user).permit(:role)
   end
 end

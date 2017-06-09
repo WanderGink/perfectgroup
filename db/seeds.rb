@@ -16,7 +16,7 @@ OrderStatus.create id: 4, name: "Cancelled"
 
 User.create id: 1, username: "bui", email: "bui@gmail.com",
   phone_number: "01669206686", password: "123456",
-  password_confirmation: "123456", admin: true
+  password_confirmation: "123456", role: "admin"
 User.create id: 2, username: "manh", email: "manh@gmail.com",
   phone_number: "01669206686", password: "123456",
   password_confirmation: "123456"
