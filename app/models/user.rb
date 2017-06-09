@@ -23,7 +23,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_attached_file :image, styles: {small: "80x80#", med: "100x100#",
-    large: "200x200#", verysmall: "30x30#"}
+    large: "200x200#", verysmall: "30x30#"},
+    default_url: "missing.png"
 
   validates_attachment :image,
     content_type: {content_type: /\Aimage/},
@@ -37,7 +38,7 @@ class User < ApplicationRecord
 
   ratyrate_rater
 
-  enum role: [:admin, :sale_man, :buy_man]
+  enum role: [:admin, :sale_man, :buy_man, :locked]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
