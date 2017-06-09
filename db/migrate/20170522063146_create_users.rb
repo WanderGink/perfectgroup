@@ -4,8 +4,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :phone_number
       t.string :username
       t.string :image
-      t.boolean :admin, default: false
-      t.boolean :sale, default: false
 
       t.timestamps
     end

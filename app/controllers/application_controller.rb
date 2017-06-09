@@ -6,10 +6,11 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if session[:order_id].present?
-      Order.find_by id: session[:order_id]
+      Order.find session[:order_id]
     else
       delele_session unless @order_status = OrderStatus.first
-      current_user.orders.create @order_status_id if user_signed_in?
+      #current_user.orders.create @order_status_id if user_signed_in?
+      current_user.orders.create order_status_id: 1 if user_signed_in?
     end
   end
 
@@ -27,9 +28,5 @@ class ApplicationController < ActionController::Base
 
   def page_error
     render template: "public/404", status: 403
-  end
-
-  def delele_session
-    session[:order_id] = nil
   end
 end

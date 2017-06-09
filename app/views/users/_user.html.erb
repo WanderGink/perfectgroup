@@ -11,10 +11,21 @@
 <% if can? :read, User %>
   <td>
     <%= form_for(user) do |f| %>
+<<<<<<< HEAD
       <% unless user.role == "admin" %>
         <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
         <%= f.submit 'Change Role', :class => 'button-xs' %>
       <% end %>
     <% end %>
   </td>
+=======
+      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+      <%= f.submit 'Change Role', :class => 'button-xs' %>
+    <% end %>
+  </td>
+  <% if current_user.admin? && !user.current_user?(current_user) %>
+    <%= link_to t(".linkto6"), user, method: :delete,
+      data: {confirm: t(".linkto7")} %>
+  <% end %>
+>>>>>>> 378a234... role 2
 <% end %>
