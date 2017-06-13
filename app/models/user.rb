@@ -30,8 +30,8 @@ class User < ApplicationRecord
     content_type: {content_type: /\Aimage/},
     size: {in: 0..10.megabytes}
 
-  scope :only_sale_man, (->_user{where role: 1})
-  scope :unless_admin, (->_user{where("role not in (0)")})
+  scope :only_sale_man, (->{where role: 1})
+  scope :unless_admin, (->{where("role not in (0)")})
 
   searchkick text_start: :username
 

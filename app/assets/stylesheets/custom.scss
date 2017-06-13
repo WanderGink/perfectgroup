@@ -5,7 +5,8 @@ $blue: #00afff;
 $blue-gray-d4: #d4d4d5;
 $color-card-footer: rgba(0, 0, 0, .4);
 $color-border-card-footer: rgba(0, 0, 0, .05);
-$color-card-box-shadow: #e5e6e7;
+$color-card-box-shadow: rgba(0,0,0,.1);
+$color-card-box-shadow-hover: rgba(168,182,191,.5);
 $color-card-text: rgba(0, 0, 0, .68);
 $color-meta: rgba(0, 0, 0, .4);
 $color-meta-a: rgba(0, 0, 0, .4);
@@ -47,16 +48,16 @@ footer {
   border-top: 1px solid $gray-medium-light;
   bottom: 0;
   color: $gray-light;
-  margin-top: 45px;
-  padding: 10px 0 10;
+  padding: 20px 0 10px;
   position: relative;
   width: 100%;
 
   a {
     color: $gray;
+    text-decoration: none !important;
 
     &:hover {
-      color: $gray-darker;
+      color: $blue;
     }
   }
 
@@ -113,10 +114,16 @@ footer {
   background-color: $white;
   border: 0;
   border-radius: .28571429rem;
-  box-shadow: .2em .3em .7em $color-card-box-shadow;
+  box-shadow: 0 1px 1px $color-card-box-shadow;
   font-size: 1em;
   overflow: hidden;
   padding: 0;
+  transition: all .15s ease-in-out;
+  width: 100%;
+
+  &:hover {
+    box-shadow: 0 4px 20px 0 $color-card-box-shadow-hover;
+  }
 
   .card-block {
     border: 0;
@@ -128,7 +135,7 @@ footer {
     position: relative;
 
     .text-bold {
-      font-weight: 700;
+      font-weight: 700 !important;
     }
 
     .card-title {
@@ -160,6 +167,10 @@ footer {
     padding: .75em 1em;
     position: static;
     top: 0;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 
@@ -240,7 +251,7 @@ $panel-heading-color-border: #ddd;
 $text-danger-color: #ff0342;
 
 .text-danger {
-  color: $text-danger-color;
+  color: $text-danger-color !important;
 }
 
 .btn-heart {
@@ -256,11 +267,6 @@ $text-danger-color: #ff0342;
   margin-top: 40px;
 }
 
-.clearfix img {
-  border: 1px solid $shadow-color;
-  box-shadow: .1em .2em .6em $shadow-color;
-}
-
 .vn,
 .uk {
   height: 24px;
@@ -271,6 +277,42 @@ img.raty-cancel {
   display: none;
 }
 
+.padding-md {
+  padding: 20px;
+}
+
+.padding-left-md {
+  padding-left: 12%;
+}
+
 .m-b-md {
   margin-bottom: 20px;
+}
+
+.margin-left-md {
+  margin-left: 5em;
+}
+
+.margin-right-md {
+  margin-right: 5m !important;
+}
+
+.margin-top-md {
+  margin-top: 5em;
+}
+
+.margin-top-sm {
+  margin-top: 1em;
+}
+
+.margin-top-lg {
+  margin-top: 10em;
+}
+
+.half-width {
+  width: 20%;
+}
+
+.i-2x {
+  font-size: 1.5em !important;
 }

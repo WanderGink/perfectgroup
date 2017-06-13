@@ -6,4 +6,8 @@ module ProductsHelper
       redirect_to root_url
     end
   end
+
+  def load_rater rater_id
+    rater = User.find_by id: rater_id
+  end
 end
