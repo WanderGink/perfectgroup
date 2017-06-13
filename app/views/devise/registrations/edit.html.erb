@@ -1,43 +1,47 @@
-<h2><%= t ".title" %><%= resource_name.to_s.humanize %></h2>
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+<div class="card padding-md margin-top-md m-b-md">
+<h2 class="text-center"><%= t ".title" %><%= resource_name.to_s.humanize %></h2>
 
 <%= form_for resource, as: resource_name,
   url: registration_path(resource_name), html: {method: :put} do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.email_field :email, placeholder: t("femail"),
-      autofocus: true %>
+      class: "form-control", autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div><%= t ".content13" %><%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.password_field :password, placeholder: t("fpass"),
-      autocomplete: "off" %>
+      class: "form-control", autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %><%= t ".content22" %></em>
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.password_field :password_confirmation, placeholder: t("fpass"),
-      autocomplete: "off" %>
+      class: "form-control", autocomplete: "off" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.password_field :current_password,
-      placeholder: t("fnpass"), autocomplete: "off" %>
+      class: "form-control", placeholder: t("fnpass"), autocomplete: "off" %>
   </div>
 
-  <div class="=field">
+  <div class="form-group">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit t(".submit") %>
+  <div class="form-group">
+    <%= f.submit t(".submit"), class: "btn btn-success btn-block" %>
   </div>
 <% end %>
 
@@ -47,3 +51,7 @@
   registration_path(resource_name),
   data: {confirm: t(".confirm")}, method: :delete %></p>
 <%= link_to t(".linkto"), :back %>
+</div>
+</div>
+<div class="col-md-3"></div>
+</div>

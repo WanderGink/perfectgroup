@@ -1,70 +1,81 @@
 <div class="row">
   <div class="main">
     <div class="col-md-9">
-      <div class="panel panel-info">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-3">
-              <%= image_tag @product.product_image.url(:thumb),
-                class: "img-thumbnail" %>
-            </div>
-            <div class="col-sm-9">
-              <h3><%= @product.title %></h3>
-              <h4><%= number_to_currency @product.price %></h4>
-              <h5><%= @product.description %></h5>
-              <% if @order_item.present? %>
-                <%= form_for @order_item, url: order_items_path(@order_item),
-                  remote: true do |f| %>
-                  <%= f.hidden_field :quantity, value: 1,
-                  class: "form-control", min: 1 %>
-                  <%= f.hidden_field :product_id, value: @product.id %>
-                  <% if can? :read, Product %>
-                    <%= f.submit t("add_to_cart"),
-                    class: "btn btn-danger" %>
-                  <% end %>
+      <div class="card padding-md">
+        <div class="row">
+          <div class="col-sm-3">
+            <%= image_tag @product.product_image.url(:thumb),
+              class: "img-thumbnail" %>
+          </div>
+          <div class="col-sm-9">
+            <h3><%= @product.title %></h3>
+            <h4><%= number_to_currency @product.price %></h4>
+            <h5><%= @product.description %></h5>
+            <% if @order_item.present? %>
+              <%= form_for @order_item, url: order_items_path(@order_item),
+                remote: true do |f| %>
+                <%= f.hidden_field :quantity, value: 1,
+                class: "form-control", min: 1 %>
+                <%= f.hidden_field :product_id, value: @product.id %>
+                <% if can? :read, Product %>
+                  <%= f.submit t("add_to_cart"),
+                  class: "btn btn-danger" %>
                 <% end %>
               <% end %>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
-      <div class="panel panel-info">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-12">
-              <ul class="nav nav-tabs">
-                <li class="active">
-                  <a data-toggle="tab" href="#comment">
-                    <%= t "comment" %>
-                  </a>
-                </li>
-                <li>
-                  <a data-toggle="tab" href="#reviewers">
-                    <%= t "reviewers" %>
-                  </a>
-                </li>
-              </ul>
-              <div class="tab-content">
-                <div id="comment" class="tab-pane fade in active">
-                  <br>
-                  <%= form_for [@product, @comment], remote: true do |f| %>
-                    <div class="form-group">
-                      <%= f.text_area :content, class: "form-control" %>
-                    </div>
-                    <div class="form-group">
-                      <%= f.submit t("comment"), class: "btn btn-success" %>
-                    </div>
-                  <% end %>
-                  <hr>
-                  <div id="comments-list-box">
-                    <% if @product.comment_products.present? %>
-                      <%= render @product.comment_products %>
-                    <% end %>
+      <br><br>
+      <div class="card padding-md">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a data-toggle="tab" href="#comment">
+                  <%= t "comment" %>
+                </a>
+              </li>
+              <li>
+                <a data-toggle="tab" href="#reviewers">
+                  <%= t "reviewers" %>
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="comment" class="tab-pane fade in active">
+                <br>
+                <%= form_for [@product, @comment], remote: true do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :content, class: "form-control" %>
                   </div>
+                  <div class="form-group">
+                    <%= f.submit t("comment"), class: "btn btn-success" %>
+                  </div>
+                <% end %>
+                <hr>
+                <div id="comments-list-box">
+                  <% if @product.comment_products.present? %>
+                    <%= render @product.comment_products %>
+                  <% end %>
                 </div>
-                <div id="reviewers" class="tab-pane fade">
+              </div>
+              <div id="reviewers" class="tab-pane fade">
+                <ul class="list-unstyled">
+                <% @raters.each do |rater| %>
+                <li class="clearfix">
                   <br>
-                </div>
+                  <div class="pull-left">
+                    <%= image_tag rater.image.url(:small),
+                      class: "img-thumbnail" %>
+                  </div>
+                  <h4 class="padding-left-md"><%= rater.username %></h4>
+                  <div class="pull-right">
+                    <%= rating_for @product, "quality", disable_after_rate: false %>
+                  </div>
+                </li>
+                <% end %>
+                </ul>
               </div>
             </div>
           </div>

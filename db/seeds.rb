@@ -6,20 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.create! id: 1, name: "food"
-Category.create! id: 2, name: "fast"
+Category.create name: "food"
+Category.create name: "fast"
 
-OrderStatus.create id: 1, name: "In Progress"
-OrderStatus.create id: 2, name: "Placed"
-OrderStatus.create id: 3, name: "Shipped"
-OrderStatus.create id: 4, name: "Cancelled"
+OrderStatus.create name: "In Progress"
+OrderStatus.create name: "Placed"
+OrderStatus.create name: "Shipped"
+OrderStatus.create name: "Cancelled"
 
-User.create id: 1, username: "bui", email: "bui@gmail.com",
+User.create username: "bui", email: "bui@gmail.com",
   phone_number: "01669206686", password: "123456",
   password_confirmation: "123456", role: "admin"
-User.create id: 2, username: "manh", email: "manh@gmail.com",
+User.create username: "manh", email: "manh@gmail.com",
   phone_number: "01669206686", password: "123456",
   password_confirmation: "123456"
-User.create id: 3, username: "linh", email: "linh@gmail.com",
+User.create username: "linh", email: "linh@gmail.com",
   phone_number: "01669206686", password: "123456",
   password_confirmation: "123456"

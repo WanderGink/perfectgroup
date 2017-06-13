@@ -1,31 +1,28 @@
-<li>
-  <% if user.image.present? %>
-    <%= link_to image_tag(user.image.url(:small)), user.image.url %>
+<tr>
+  <% if user.image.url(:small).present? %>
+    <td><%= image_tag user.image.url(:small) %></td>
   <% else %>
-    <% image_tag "default.jpg" %>
+    <td><% image_tag user.image.url, widht: 80, height: 80 %></td>
   <% end %>
-  <a class="tab" />
-  <%= link_to user.username, user %>
-  <%= rating_for user, "quality", star: 5 %>
-</li>
-<% if can? :read, User %>
-  <td>
-    <%= form_for(user) do |f| %>
-<<<<<<< HEAD
-      <% unless user.role == "admin" %>
-        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-        <%= f.submit 'Change Role', :class => 'button-xs' %>
+
+  <td><%= link_to user.username, user_path(user) %></td>
+  <td><%= user.email %></td>
+  <td><%= rating_for user, "quality", star: 5 %></td>
+
+  <% if can? :read, User %>
+    <td class="half-width">
+      <%= form_for(user) do |f| %>
+        <div class="input-group">
+        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]},{prompt: "Select role"}, {class: "form-control"}) %>
+        <span class="input-group-btn">
+        <%= f.submit "Change", class: "btn btn-info" %>
+        </span>
+        </div>
       <% end %>
+    </td>
+    <% if current_user.admin? && !user.current_user?(current_user) %>
+      <td><%= link_to t(".linkto6"), user_path(user), method: :delete,
+        data: {confirm: t(".linkto7")}, class: "btn btn-danger" %></td>
     <% end %>
-  </td>
-=======
-      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-      <%= f.submit 'Change Role', :class => 'button-xs' %>
-    <% end %>
-  </td>
-  <% if current_user.admin? && !user.current_user?(current_user) %>
-    <%= link_to t(".linkto6"), user, method: :delete,
-      data: {confirm: t(".linkto7")} %>
   <% end %>
->>>>>>> 378a234... role 2
-<% end %>
+</tr>

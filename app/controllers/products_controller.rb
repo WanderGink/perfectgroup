@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
 
   def show
     @comment = CommentProduct.new
+    @raters = Rate.get_product_rater @product.id
   end
 
   def edit
@@ -74,7 +75,5 @@ class ProductsController < ApplicationController
 
   def load_order
     @order_item = current_order.order_items.new if user_signed_in?
-    #&&
-    #   current_order.present?
   end
 end

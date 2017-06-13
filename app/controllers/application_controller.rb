@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
     if session[:order_id].present?
       Order.find session[:order_id]
     else
-      delele_session unless @order_status = OrderStatus.first
-      #current_user.orders.create @order_status_id if user_signed_in?
-      current_user.orders.create order_status_id: 1 if user_signed_in?
+      order = current_user.orders.create order_status_id: 1 if user_signed_in?
+      session[:order_id] = order.id
+      order
     end
   end
 
