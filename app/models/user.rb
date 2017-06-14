@@ -15,7 +15,6 @@ class User < ApplicationRecord
     class_name: Product.name
   has_many :relationships
   has_many :comment_products
-  has_many :rating_products
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
@@ -24,13 +23,31 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_attached_file :image, styles: {small: "80x80#", med: "100x100#",
-    large: "200x200#", verysmall: "30x30#"}
+    large: "200x200#", verysmall: "30x30#"},
+    default_url: "missing.jpg"
 
-  validates_attachment :image, presence: true,
+  validates_attachment :image,
     content_type: {content_type: /\Aimage/},
     size: {in: 0..10.megabytes}
 
-  scope :not_is_admin, (->_user{where admin: false})
+  scope :only_sale_man, (->{where role: 1})
+  scope :unless_admin, (->{where "username not in ('admin')"})
+  scope :raters, ->(rateable_id){where "id in (?)",
+    Rate.where(rateable_id: rateable_id,
+    rateable_type: Product.name).select(:rater_id)}
+
+  searchkick text_start: [:username]
+
+  ratyrate_rateable "quality"
+
+  ratyrate_rater
+
+  enum role: [:admin, :sale, :buy, :bye]
+  after_initialize :set_default_role, if: :new_record?
+
+  def set_default_role
+    self.role ||= :sale_man
+  end
 
   def follow other_user
     following << other_user
@@ -58,5 +75,21 @@ class User < ApplicationRecord
 
   def liking? comment_id
     likeships.find_by comment_product_id: comment_id
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def sale?
+    role == "sale"
+  end
+
+  def buy?
+    role == "buy"
+  end
+
+  def bye?
+    role == "bye"
   end
 end

@@ -17,6 +17,6 @@ class PagesController < ApplicationController
   end
 
   def load_user
-    @users = User.not_is_admin
+    @users = User.unless_admin
   end
 end
