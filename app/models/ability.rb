@@ -14,7 +14,7 @@ class Ability
     if user.sale?
       can :manage, [CommentProduct, Product]
       can :create, Feedback
-      can :manage, User
+      cannot :manage, User
       cannot :manage, Category
       can [:read, :create, :destroy], Relationship
       can [:create, :destroy], Likeship

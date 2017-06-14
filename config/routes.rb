@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "pages/about"
   get "pages/contact"
   get "pages/product"
+  get "search" => "searchs#index"
+  get "checkout" => "charges#new"
+  post "checkout" => "charges#create"
 
   resources :users, except: [:create, :new, :edit] do
     resources :relationships, only: :index
