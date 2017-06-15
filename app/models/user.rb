@@ -31,15 +31,16 @@ class User < ApplicationRecord
     size: {in: 0..10.megabytes}
 
   scope :only_sale_man, (->{where role: 1})
-  scope :unless_admin, (->{where("role not in (0)")})
+  scope :unless_admin, (->{where "username not in ('admin')"})
 
-  searchkick text_start: :username
+  searchkick text_start: [:username]
 
   ratyrate_rateable "quality"
 
   ratyrate_rater
 
-  enum role: [:admin, :sale_man, :buy_man, :locked]
+  enum role: [:admin, :sale, :buy, :bye]
+
   after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
@@ -72,5 +73,21 @@ class User < ApplicationRecord
 
   def liking? comment_id
     likeships.find_by comment_product_id: comment_id
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def sale?
+    role == "sale"
+  end
+
+  def buy?
+    role == "buy"
+  end
+
+  def bye?
+    role == "bye"
   end
 end

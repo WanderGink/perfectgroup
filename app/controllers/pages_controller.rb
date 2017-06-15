@@ -20,8 +20,4 @@ class PagesController < ApplicationController
   def load_user
     @users = User.only_sale_man
   end
-
-  def delele_session
-    session[:order_id] = nil
-  end
 end
