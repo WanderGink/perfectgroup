@@ -8,16 +8,13 @@
     <td class="half-width">
       <%= form_for(user) do |f| %>
         <div class="input-group">
-        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]},{prompt: "Select role"}, {class: "form-control"}) %>
-        <span class="input-group-btn">
-          <%= f.submit "Change", class: "btn btn-info" %>
-        </span>
+          <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]},
+            {prompt: "Select role"}, {class: "form-control"}) %>
+          <span class="input-group-btn">
+            <%= f.submit "Change", class: "btn btn-info" %>
+          </span>
         </div>
       <% end %>
     </td>
-    <% if current_user.admin? && !user.current_user?(current_user) %>
-      <td><%= link_to t(".linkto6"), user_path(user), method: :delete,
-        data: {confirm: t(".linkto7")}, class: "btn btn-danger" %></td>
-    <% end %>
   <% end %>
 </tr>

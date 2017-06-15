@@ -4,5 +4,6 @@
 <%= link_to t("checkout"), checkout_path, class: "btn btn-info" %>
 
 <% order_items.each do |order_item| %>
-  <%= render "orders/order_row", product: order_item.product, order_item: order_item, show_total: true %>
+  <%= render "orders/order_row", product: order_item.product, 
+    order_item: order_item, show_total: true %>
 <% end %>
