@@ -61,6 +61,56 @@
                 </div>
               </div>
               <div id="reviewers" class="tab-pane fade">
+                <div id="xh" class="rank">
+                    <table class="ds">
+                      <thead>
+                        <tr>
+                          <th>Mức đánh giá</th>
+                          <th>Số lượng sản phẩm</th>
+                          <th>Phần trăm</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <td>Bảng đánh giá dựa trên số lượng sản phẩm đã được đánh giá: </td>
+                          <td id="tongsp">788</td>
+                          <td><input type="button" value="Xem biểu đồ" onclick="tinh();"></td>
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                        <tr>
+                          <td>5 sao</td>
+                          <td id="sp5">300</td>
+                          <td id="s5">38</td>
+                        </tr>
+                        <tr>
+                          <td>4 sao</td>
+                          <td id="sp4">200</td>
+                          <td id="s4" >25</td>
+                        </tr>
+                        <tr>
+                          <td>3 sao</td>
+                          <td id="sp3">158</td>
+                          <td id="s3">20</td>
+                        </tr>
+                        <tr >
+                          <td>2 sao</td>
+                          <td id="sp2">100</td>
+                          <td id="s2">13</td>
+                        </tr>
+                        <tr>
+                          <td>1 sao</td>
+                          <td id="sp1">30</td>
+                          <td id="s1">4</td>
+                        </tr>
+                      </tbody>
+                  </table>
+                  <div class="piechart">
+                    <h3>Đánh giá chất lượng sản phẩm</h3>
+                    <canvas id="quality" width="400" height="200"></canvas>
+                    <script src="js/chart2.js"></script>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
